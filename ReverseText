@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+void ReverseText(char* text) {
+    int length = strlen(text);
+    int i, j;
+
+    for (i = 0, j = length - 1; i < j; i++, j--) {
+        // Karakterleri yer değiştirme
+        char temp = text[i];
+        text[i] = text[j];
+        text[j] = temp;
+    }
+}
+
+int main() {
+    char text[100];
+
+    printf("Metni girin: ");
+    fgets(text, sizeof(text), stdin);
+
+    // Metnin sonundaki yeni satır karakterini kaldırma
+    if (text[strlen(text) - 1] == '\n') {
+        text[strlen(text) - 1] = '\0';
+    }
+
+    ReverseText(text);
+
+    printf("Metnin tersi: %s\n", text);
+
+    return 0;
+}
